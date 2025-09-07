@@ -16,7 +16,7 @@ loadCategories()
 const showCategories = (categories) => {
     categories.forEach(category => {
         const showCategories = document.getElementById("showCategories")
-    showCategories.innerHTML += `<h1 id="${category.id}" class="pl-2 py-2 cursor-pointer rounded-md hover:bg-[#15803D] hover:text-white">${category.category_name}</h1>`
+    showCategories.innerHTML += `<h1 id="${category.id}" class="pl-2 py-2 md:text-left text-center md:max-w-[260px] cursor-pointer rounded-md hover:bg-[#15803D] hover:text-white">${category.category_name}</h1>`
     });
         // console.log(category)
     
