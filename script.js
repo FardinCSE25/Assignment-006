@@ -78,21 +78,30 @@ const loadPlantDetail = (id) => {
   .then((res) => res.json())
   .then((data) => {
     showPlantDetail(data);
+    console.log(data)
   })
 }
 
 const showPlantDetail = (detail) => {
+  // console.log(detail);
+  
   const detailContainer = document.getElementById("detailContainer")
-  detailContainer.innerHTML = "hello everyone"
+  detailContainer.innerHTML = `      <div>
+        <h2 class="text-2xl font-semibold mb-5">${detail.plants.name}</h2>
+        <img class="rounded-2xl h-[300px] w-full mb-3" src="${detail.plants.image}" alt="${detail.plants.name}">
+        <h2 class="font-semibold  mb-3">Category : <span class="font-light">${detail.plants.category}</span></h2>
+        <h2 class="font-semibold  mb-3">Price : <span class="font-light">৳${detail.plants.price}</span></h2>
+        <p class="font-semibold">Description : <span class="font-light">${detail.plants.description}</span></p>
+      </div>`
   document.getElementById("plantDetail").showModal()
 }
 
 
-const showModal = (plantName) => {
-showPlants.addEventListener("click", (e) => {
-  if(e.target === plantName)
-  console.log(plantName)
-})};
+// const showModal = (plantName) => {
+// showPlants.addEventListener("click", (e) => {
+//   if(e.target === plantName)
+//   console.log(plantName)
+// })};
 
 // getting all plants
 const loadAllPlants = () => {
