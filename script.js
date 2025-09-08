@@ -2,6 +2,7 @@
 const showCategoriesContainer = document.getElementById("showCategories");
 const showPlants = document.getElementById("showAllPlants");
 const cartContainer = document.getElementById("cartContainer")
+const totalAmount = document.getElementById("totalAmount")
 
 let cart = [];
 
@@ -59,13 +60,13 @@ const loadPlantsByCategory = (id) => {
 const showPlantByCategory = (plants) => {
   showPlants.innerHTML = "";
   plants.forEach((plant) => {
-    showPlants.innerHTML += `<div id='${plants.id}' class="p-4 bg-white rounded-lg mb-3">
+    showPlants.innerHTML += `<div id='${plants.id}' class="plantDiv p-4 bg-white rounded-lg mb-3">
               <img class="rounded-lg mb-3 h-[186px] w-full" src="${plant.image}" alt="${plant.name}">
               <h3 onclick="loadPlantDetail(${plant.id})" class="cursor-pointer text-sm font-semibold mb-2">${plant.name}</h3>
               <p class="text-xs mb-2">${plant.description}</p>
               <div class="flex justify-between mb-3">
                 <h3 class="bg-[#DCFCE7] rounded-[400px] text-sm text-[#15803D] px-3 py-1">${plant.category}</h3>
-                <p class="text-sm font-semibold">৳${plant.price}</p>
+                <p class="text-sm font-semibold"><span> ৳ </span><span class="price">${plant.price}</span></p>
               </div>
               <button class="w-full text-center rounded-[999px] bg-[#15803D] text-white py-3">Add to Cart</button>
             </div>`;
@@ -87,10 +88,12 @@ showPlants.addEventListener("click", (e) => {
   if(e.target.innerText === "Add to Cart"){
     const name = e.target.parentNode.children[1].innerText
     const id = e.target.parentNode.id
-    const price = e.target.parentNode.children[3].children[1].innerText
+    const price = e.target.parentNode
+    const newPrice = price.querySelector(".price").innerText
+    // console.log({newPrice})
     cart.push({
       name : name,
-      price : price,
+      price : newPrice,
       id : id
     })
     showCart(cart)
@@ -109,12 +112,20 @@ const showCart = (cart) => {
                   <i  class="text-red-600 fa-solid fa-xmark"></i>
                 </div>
               </div>`
+      //         let total = totalAmount.innerText
+      //       console.log(total)
+      //       console.log(cartDetail.price)
+      // finalAmount = parseInt(total + cartDetail.price)
+      // // console.log(finalAmount)
+      // totalAmount.innerText = finalAmount
+            
   })
+  
 }
 // delete cart
 const deleteCart = (id) => {
   // console.log(id)
-  const filteredCarts = cart.filter(cartDetail => cartDetail.id !== id)
+  const filteredCarts = cart.filter(cartDetail => cartDetail.id != id)
   cart = filteredCarts
   showCart(cart)
 }
@@ -128,7 +139,7 @@ const showPlantDetail = (detail) => {
         <h2 class="text-2xl font-semibold mb-5">${detail.plants.name}</h2>
         <img class="rounded-2xl h-[300px] w-full mb-3" src="${detail.plants.image}" alt="${detail.plants.name}">
         <h2 class="font-semibold  mb-3">Category : <span class="font-light">${detail.plants.category}</span></h2>
-        <h2 class="font-semibold  mb-3">Price : <span class="font-light">৳${detail.plants.price}</span></h2>
+        <h2 class="font-semibold  mb-3">Price : <span class="font-light">  ৳${detail.plants.price}</span></h2>
         <p class="font-semibold">Description : <span class="font-light">${detail.plants.description}</span></p>
       </div>`
   document.getElementById("plantDetail").showModal()
@@ -156,6 +167,7 @@ const loadAllPlants = () => {
 loadAllPlants();
 // show all plants
 const showAllPlants = (allPlants) => {
+  allPlants.innerHTML = ""
   allPlants.forEach((plants) => {
     // console.log(plants)
     const showAllPlants = document.getElementById("showAllPlants");
@@ -165,10 +177,18 @@ const showAllPlants = (allPlants) => {
               <p class="text-xs mb-2">${plants.description}</p>
               <div class="flex justify-between mb-3">
                 <h3 class="bg-[#DCFCE7] rounded-[400px] text-sm text-[#15803D] px-3 py-1">${plants.category}</h3>
-                <p class="text-sm font-semibold">৳${plants.price}</p>
+                <p class="text-sm font-semibold"><span>৳</span><span class="price">${plants.price}</span></p>
               </div>
               <button class="w-full text-center rounded-[999px] bg-[#15803D] text-white py-3">Add to Cart</button>
             </div>`;
+            
   });
+  //  let total = totalAmount.innerText
+  //           console.log(total)
+  //           console.log(cartDetail.price)
+  //     finalAmount = parseInt(total + cartDetail.price)
+  //     // console.log(finalAmount)
+  //     totalAmount.innerText = finalAmount
+
   // console.log(category)
 };
