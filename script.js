@@ -59,7 +59,7 @@ const loadPlantsByCategory = (id) => {
 const showPlantByCategory = (plants) => {
   showPlants.innerHTML = "";
   plants.forEach((plant) => {
-    showPlants.innerHTML += `<div class="p-4 bg-white rounded-lg mb-3">
+    showPlants.innerHTML += `<div id='${plants.id}' class="p-4 bg-white rounded-lg mb-3">
               <img class="rounded-lg mb-3 h-[186px] w-full" src="${plant.image}" alt="${plant.name}">
               <h3 onclick="loadPlantDetail(${plant.id})" class="cursor-pointer text-sm font-semibold mb-2">${plant.name}</h3>
               <p class="text-xs mb-2">${plant.description}</p>
@@ -81,6 +81,44 @@ const loadPlantDetail = (id) => {
     console.log(data)
   })
 }
+
+// load cart detail 
+showPlants.addEventListener("click", (e) => {
+  if(e.target.innerText === "Add to Cart"){
+    const name = e.target.parentNode.children[1].innerText
+    const id = e.target.parentNode.id
+    const price = e.target.parentNode.children[3].children[1].innerText
+    cart.push({
+      name : name,
+      price : price,
+      id : id
+    })
+    showCart(cart)
+  }
+})
+// show cart
+const showCart = (cart) => {
+  cartContainer.innerHTML = ""
+  cart.forEach(cartDetail => {
+    cartContainer.innerHTML += `<div class="bg-[#F0FDF4] px-3 py-2 mb-1 flex justify-between items-center rounded-lg">
+                <div>
+                  <h1 class="mb-1 text-sm font-semibold">${cartDetail.name}</h1>
+                  <p class="text-xs font-light">${cartDetail.price}</p>
+                </div>
+                <div onclick="deleteCart(${cartDetail.id})">
+                  <i  class="text-red-600 fa-solid fa-xmark"></i>
+                </div>
+              </div>`
+  })
+}
+// delete cart
+const deleteCart = (id) => {
+  // console.log(id)
+  const filteredCarts = cart.filter(cartDetail => cartDetail.id !== id)
+  cart = filteredCarts
+  showCart(cart)
+}
+
 
 const showPlantDetail = (detail) => {
   // console.log(detail);
@@ -119,9 +157,9 @@ loadAllPlants();
 // show all plants
 const showAllPlants = (allPlants) => {
   allPlants.forEach((plants) => {
-    console.log(plants)
+    // console.log(plants)
     const showAllPlants = document.getElementById("showAllPlants");
-    showAllPlants.innerHTML += `<div class="p-4 bg-white rounded-lg mb-3">
+    showAllPlants.innerHTML += `<div id='${plants.id}' class="p-4 bg-white rounded-lg mb-3">
               <img class="rounded-lg mb-3 h-[186px] w-full" src="${plants.image}" alt="${plants.name}">
               <h3 onclick="loadPlantDetail(${plants.id})" class="cursor-pointer text-sm font-semibold mb-2">${plants.name}</h3>
               <p class="text-xs mb-2">${plants.description}</p>
