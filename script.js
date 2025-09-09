@@ -45,7 +45,7 @@ const showCategories = (categories) => {
 // getting plants by categories
 const loadPlantsByCategory = (id) => {
   // console.log(id);
-
+  manageLoading(true)
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
     .then((data) => {
@@ -58,6 +58,7 @@ const loadPlantsByCategory = (id) => {
 };
 // show plants by category
 const showPlantByCategory = (plants) => {
+  
   showPlants.innerHTML = "";
   plants.forEach((plant) => {
     showPlants.innerHTML += `<div id='${plants.id}' class="plantDiv p-4 bg-white rounded-lg mb-3">
@@ -71,7 +72,7 @@ const showPlantByCategory = (plants) => {
               <button class="w-full text-center rounded-[999px] bg-[#15803D] text-white py-3">Add to Cart</button>
             </div>`;
   });
-  
+  manageLoading(false)
 };
 // load plant details for modal
 const loadPlantDetail = (id) => {
@@ -106,7 +107,7 @@ const showCart = (cart) => {
     cartContainer.innerHTML += `<div class="bg-[#F0FDF4] px-3 py-2 mb-1 flex justify-between items-center rounded-lg">
                 <div>
                   <h1 class="mb-1 text-sm font-semibold">${cartDetail.name}</h1>
-                  <p class="text-xs font-light">${cartDetail.price}</p>
+                  <p class="text-xs font-light">৳ ${cartDetail.price}</p>
                 </div>
                 <div onclick="deleteCart(${cartDetail.id})">
                   <i  class="text-red-600 fa-solid fa-xmark"></i>
@@ -135,7 +136,7 @@ const showPlantDetail = (detail) => {
   // console.log(detail);
   
   const detailContainer = document.getElementById("detailContainer")
-  detailContainer.innerHTML = `      <div>
+  detailContainer.innerHTML = `   <div>
         <h2 class="text-2xl font-semibold mb-5">${detail.plants.name}</h2>
         <img class="rounded-2xl h-[300px] w-full mb-3" src="${detail.plants.image}" alt="${detail.plants.name}">
         <h2 class="font-semibold  mb-3">Category : <span class="font-light">${detail.plants.category}</span></h2>
@@ -145,12 +146,23 @@ const showPlantDetail = (detail) => {
   document.getElementById("plantDetail").showModal()
 }
 
-
 // const showModal = (plantName) => {
 // showPlants.addEventListener("click", (e) => {
 //   if(e.target === plantName)
 //   console.log(plantName)
 // })};
+
+// manage loading
+const manageLoading = (status) => {
+  if(status == true){
+    document.getElementById("loading").classList.remove("hidden")
+    document.getElementById("showAllPlants").classList.add("invisible")
+  }
+  else {
+    document.getElementById("showAllPlants").classList.remove("invisible")
+    document.getElementById("loading").classList.add("hidden")
+  }
+}
 
 // getting all plants
 const loadAllPlants = () => {
