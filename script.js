@@ -193,14 +193,14 @@ const showAllPlants = (allPlants) => {
               </div>
               <button class="w-full text-center rounded-[999px] bg-[#15803D] text-white py-3">Add to Cart</button>
             </div>`;
-             let total = totalAmount.innerText
-            console.log(total)
-            console.log(cartDetail.price)
-      finalAmount = parseInt(total + cartDetail.price)
-      // console.log(finalAmount)
-      totalAmount.innerText = finalAmount
+  //            let total = totalAmount.innerText
+  //           console.log(total)
+  //           console.log(cartDetail.price)
+  //     finalAmount = parseInt(total + cartDetail.price)
+  //     // console.log(finalAmount)
+  //     totalAmount.innerText = finalAmount
 
-  console.log(category)
+  // console.log(category)
   });
   
 };
