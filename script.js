@@ -62,9 +62,9 @@ const showPlantByCategory = (plants) => {
   showPlants.innerHTML = "";
   plants.forEach((plant) => {
     showPlants.innerHTML += `<div id='${plants.id}' class="plantDiv p-4 bg-white rounded-lg mb-3">
-              <img class="rounded-lg mb-3 h-[186px] w-full" src="${plant.image}" alt="${plant.name}">
-              <h3 onclick="loadPlantDetail(${plant.id})" class="cursor-pointer text-sm font-semibold mb-2">${plant.name}</h3>
-              <p class="text-xs h-[150px] mb-2">${plant.description}</p>
+              <img class="rounded-lg mb-3 h-[280px] w-full" src="${plant.image}" alt="${plant.name}">
+              <h3 onclick="loadPlantDetail(${plant.id})" class="inline cursor-pointer hover:bg-[#DCFCE7] hover:text-[#15803D] text-sm font-semibold">${plant.name}</h3>
+              <p class="text-xs h-[70px] mt-2 mb-2">${plant.description}</p>
               <div class="flex justify-between mb-3">
                 <h3 class="bg-[#DCFCE7] rounded-[400px] text-sm text-[#15803D] px-3 py-1">${plant.category}</h3>
                 <p class="text-sm font-semibold"><span> ৳ </span><span class="price">${plant.price}</span></p>
@@ -113,12 +113,12 @@ const showCart = (cart) => {
                   <i  class="text-red-600 fa-solid fa-xmark"></i>
                 </div>
               </div>`
-      //         let total = totalAmount.innerText
-      //       console.log(total)
-      //       console.log(cartDetail.price)
-      // finalAmount = parseInt(total + cartDetail.price)
-      // // console.log(finalAmount)
-      // totalAmount.innerText = finalAmount
+              let total = totalAmount.innerText
+            console.log(total)
+            console.log(cartDetail.price)
+      finalAmount = parseInt(total + cartDetail.price)
+      // console.log(finalAmount)
+      totalAmount.innerText = finalAmount
             
   })
   
@@ -184,23 +184,23 @@ const showAllPlants = (allPlants) => {
     // console.log(plants)
     const showAllPlants = document.getElementById("showAllPlants");
     showAllPlants.innerHTML += `<div id='${plants.id}' class="p-4 bg-white rounded-lg mb-3">
-              <img class="rounded-lg mb-3 h-[186px] w-full" src="${plants.image}" alt="${plants.name}">
-              <h3 onclick="loadPlantDetail(${plants.id})" class="cursor-pointer text-sm font-semibold mb-2">${plants.name}</h3>
-              <p class="text-xs h-[150px] mb-2">${plants.description}</p>
+              <img class="rounded-lg mb-3 h-[280px] w-full" src="${plants.image}" alt="${plants.name}">
+              <h3 onclick="loadPlantDetail(${plants.id})" class="inline cursor-pointer text-sm  hover:bg-[#DCFCE7] hover:text-[#15803D] font-semibold ">${plants.name}</h3>
+              <p class="text-xs h-[70px] mt-2 mb-2">${plants.description}</p>
               <div class="flex justify-between mb-3">
                 <h3 class="bg-[#DCFCE7] rounded-[400px] text-sm text-[#15803D] px-3 py-1">${plants.category}</h3>
                 <p class="text-sm font-semibold"><span>৳</span><span class="price">${plants.price}</span></p>
               </div>
               <button class="w-full text-center rounded-[999px] bg-[#15803D] text-white py-3">Add to Cart</button>
             </div>`;
-            
-  });
-  //  let total = totalAmount.innerText
-  //           console.log(total)
-  //           console.log(cartDetail.price)
-  //     finalAmount = parseInt(total + cartDetail.price)
-  //     // console.log(finalAmount)
-  //     totalAmount.innerText = finalAmount
+             let total = totalAmount.innerText
+            console.log(total)
+            console.log(cartDetail.price)
+      finalAmount = parseInt(total + cartDetail.price)
+      // console.log(finalAmount)
+      totalAmount.innerText = finalAmount
 
-  // console.log(category)
+  console.log(category)
+  });
+  
 };
