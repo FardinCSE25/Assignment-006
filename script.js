@@ -64,7 +64,7 @@ const showPlantByCategory = (plants) => {
     showPlants.innerHTML += `<div id='${plants.id}' class="plantDiv p-4 bg-white rounded-lg mb-3">
               <img class="rounded-lg mb-3 h-[186px] w-full" src="${plant.image}" alt="${plant.name}">
               <h3 onclick="loadPlantDetail(${plant.id})" class="cursor-pointer text-sm font-semibold mb-2">${plant.name}</h3>
-              <p class="text-xs mb-2">${plant.description}</p>
+              <p class="text-xs h-[150px] mb-2">${plant.description}</p>
               <div class="flex justify-between mb-3">
                 <h3 class="bg-[#DCFCE7] rounded-[400px] text-sm text-[#15803D] px-3 py-1">${plant.category}</h3>
                 <p class="text-sm font-semibold"><span> ৳ </span><span class="price">${plant.price}</span></p>
@@ -186,7 +186,7 @@ const showAllPlants = (allPlants) => {
     showAllPlants.innerHTML += `<div id='${plants.id}' class="p-4 bg-white rounded-lg mb-3">
               <img class="rounded-lg mb-3 h-[186px] w-full" src="${plants.image}" alt="${plants.name}">
               <h3 onclick="loadPlantDetail(${plants.id})" class="cursor-pointer text-sm font-semibold mb-2">${plants.name}</h3>
-              <p class="text-xs mb-2">${plants.description}</p>
+              <p class="text-xs h-[150px] mb-2">${plants.description}</p>
               <div class="flex justify-between mb-3">
                 <h3 class="bg-[#DCFCE7] rounded-[400px] text-sm text-[#15803D] px-3 py-1">${plants.category}</h3>
                 <p class="text-sm font-semibold"><span>৳</span><span class="price">${plants.price}</span></p>
